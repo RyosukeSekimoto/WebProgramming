@@ -1,3 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.User" %>
+
+<%
+
+String errorMessage = (String)request.getAttribute("errorMessage");
+
+%>
+
 <!DOCTYPE html>
 <html lang ="ja">
     <head>
@@ -10,8 +19,10 @@
         <div id="form" class="main">
                 <div class="login-wrapper">
                     <h2 class="title">ログイン画面</h2>
-                    <p class="validation red">ここにバリデーションが入ります。</p>
-                    <form action="#" method="" class="login-box">
+                    <% if(errorMessage != null) { %>
+                    	<p class="validation red">ログインIDまたはパスワードが正しくありません。</p>
+                    <% } %>
+                    <form action="/UserManagement/Login" method="post" class="login-box">
                         <p class="form-label">ログインID</p>
                         <p class="login-id"><input type="text" name="loginId"/></p>
                         <p class="form-label">パスワード</p>
