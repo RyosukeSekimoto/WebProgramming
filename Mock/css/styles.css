@@ -1,0 +1,451 @@
+@charset "utf-8";
+
+/* common */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    color:  #606060;
+    font-size: 1.5rem;
+    font-family: 'YuGothic', 'Yu Gothic', sans-serif;
+    background: #f4f4f4;
+}
+
+h2 {
+    font-size: 2.6rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.validation {
+    margin-top: 20px;
+}
+
+.red {
+    color: #cc0000;
+}
+
+.main {
+    width: 960px;
+    margin: 60px auto 120px;
+}
+
+.back {
+    width: 720px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    text-align: right;
+    margin-top: 15px;
+}
+
+.back > a {
+    color: #2490d0;
+    text-decoration: underline;
+    transition: opacity .2s;
+}
+
+.back > a:hover {
+    opacity: .8;
+}
+
+/* button */
+
+.middle-btn {
+    display: inline-block;
+    text-align: center;
+    width: 160px;
+    color: #fff;
+    background-color: #2490d0;
+    border-radius: 3px;
+    line-height: 40px;
+    font-size: 1.5rem;
+    transition: opacity 0.2s;
+    cursor: pointer;
+}
+
+.middle-btn2 {
+    background: none;
+    line-height: 38px;
+    border: 1px solid #2490d0;
+    color: #2490d0;
+}
+
+.middle-btn3 {
+    background-color: #606060;
+}
+
+.middle-btn4 {
+    background-color: #cc0000;
+}
+
+.middle-btn:hover {
+    opacity: .8;
+}
+
+.small-btn:hover {
+    opacity: .8;
+}
+
+.small-btn {
+    display: inline-block;
+    width: 50px;
+    line-height: 25px;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2px;
+    border: 1px solid #2490d0;
+    color: #2490d0;
+    border-radius: 3px;
+    transition: opacity .2s;
+}
+
+.small-btn2 {
+    border: 1px solid #e2951a;
+    color: #e2951a;
+}
+
+.small-btn3 {
+    border: 1px solid #cc0000;
+    color: #cc0000;
+}
+
+/* form */
+
+input[type="email"],input[type="password"],
+input[type="text"],input[type="date"] {
+    height: 40px;
+    padding: 6px 10px;
+    background-color: #fff;
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* dateの文字色変更 */
+input[type="date"] {
+    color: #606060;
+    font-weight: ;
+}
+
+/* placeholderの文字色変更 */
+input::-webkit-input-placeholder {
+    color: #ccc;
+    font-weight: normal;
+}
+input:-ms-input-placeholder {
+    color: #ccc;
+    font-weight: normal;
+}
+input::-moz-placeholder {
+    color: #ccc;
+    font-weight: normal;
+}
+
+.form-label {
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.login-wrapper .form-label:first-child {
+    margin-top: 40px;
+}
+
+/* login */
+
+.login-wrapper {
+    width: 360px;
+    margin: 140px auto;
+    text-align: center;
+}
+
+.login-wrapper input[type="email"],
+.login-wrapper input[type="password"],
+.login-wrapper input[type="text"],
+.login-wrapper input[type="date"] {
+    width: 100%;
+}
+
+.login-wrapper input[type="email"] {
+    margin-bottom: 35px;
+}
+
+.login-wrapper input[type="password"] {
+    margin-bottom: 80px;
+}
+
+/* header */
+
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: #2d2d2d;
+}
+
+.site-title {
+    float: left;
+    width: auto;
+    letter-spacing: 1px;
+    font-size: 2.8rem;
+    font-weight: normal;
+    line-height: 80px;
+    color: #fff;
+}
+
+.header-wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.nav-list {
+    float: right;
+    width: auto;
+}
+
+.nav-item {
+    display: inline-block;
+    margin-left: 35px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.nav-list > .nav-item > a {
+    text-align: center;
+    display: inline-block;
+    width: 80px;
+    line-height: 20px;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    font-size: 1.2rem;
+    font-weight: normal;
+    padding: 8px 2px;
+    color: #fff;
+    transition: opacity 0.2s;
+}
+
+.nav-list > .nav-item > a:hover {
+    opacity: .8;
+}
+
+/* user */
+
+.users-wrapper {
+    margin-top: 60px;
+    padding: 60px 60px 70px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.users-wrapper input[type="email"],
+.users-wrapper input[type="password"],
+.users-wrapper input[type="text"],
+.users-wrapper input[type="date"] {
+    width: 180px;
+}
+
+.title {
+    display: inline-block;
+    line-height: 40px;
+}
+
+.btn-right {
+    float: right;
+}
+
+.login-col, .user-col {
+    float: left;
+}
+
+.birth-col {
+    float: right;
+}
+
+.user-col {
+    margin-left: 35px;
+}
+
+.users-wrapper .submit {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.list-title {
+    padding: 0 10px 12px;
+    border-bottom: 1px solid #333333;
+    margin-top: 80px;
+}
+
+.list-title > li {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 18%;
+}
+
+.user-list {
+    list-style: none;
+}
+
+.user-list-item {
+    line-height: 60px;
+    padding: 0 10px;
+}
+
+.user-list-item:nth-of-type(2n) {
+    background-color: #f4f4f4;
+}
+
+.user-list-item > span {
+    display: inline-block;
+    width: 18%;
+}
+
+.small-btns {
+    float: right;
+}
+
+.small-btn + .small-btn {
+    margin-left: 10px;
+}
+
+/* resister */
+
+.register-wrapper {
+    width: 720px;
+    margin: 60px auto 0px;
+    padding: 60px 60px 70px;
+    background-color: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.register-box {
+    width: 360px;
+    margin: 0 auto;
+}
+
+.register-wrapper input[type="email"],
+.register-wrapper input[type="password"],
+.register-wrapper input[type="text"],
+.register-wrapper input[type="date"]{
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.register-wrapper input[type="date"] {
+    margin-bottom: 80px;
+
+}
+
+.register-wrapper .submit {
+    margin: 0;
+}
+
+/* update */
+
+.update-wrapper {
+    width: 720px;
+    margin: 60px auto 0px;
+    padding: 60px 60px 70px;
+    background-color: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.update-box {
+    width: 360px;
+    margin: 0 auto;
+}
+
+.update-wrapper input[type="email"],
+.update-wrapper input[type="password"],
+.update-wrapper input[type="text"],
+.update-wrapper input[type="date"]{
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.update-wrapper input[type="date"] {
+    margin-bottom: 80px;
+}
+
+.update-wrapper .submit {
+    margin: 0;
+}
+
+/* detail */
+
+.detail-wrapper {
+    width: 720px;
+    margin: 60px auto 0px;
+    padding: 20px 60px 30px;
+    background-color: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+table.detail-table {
+    text-align: left;
+    border-collapse: separate;
+    border-spacing : 0 30px;
+}
+
+table.detail-table th {
+	width: 150px;
+	padding: 10px;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+table.detail-table td {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+/* delete */
+
+.delete-wrapper {
+    width: 720px;
+    margin: 60px auto 0px;
+    padding: 60px 60px 70px;
+    background-color: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.middle-btns {
+    text-align: center;
+}
+
+.middle-btns .middle-btn {
+    margin: 0 20px;
+}
+
+.delete-wrapper p {
+    font-size: 1.8rem;
+    margin-bottom: 80px;
+}
+
+.delete-wrapper span {
+    font-weight: bold;
+}
+
+
