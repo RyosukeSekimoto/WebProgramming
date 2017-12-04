@@ -22,7 +22,7 @@ User user = (User)session.getAttribute("user");
                     <nav class="grobal-nav">
                         <ul class="nav-list">
                             <li class="nav-item"><span class=""><%= user.getLoginId() %></span>さん</li>
-                            <li class="nav-item"><a href="./login.html">ログアウト</a></li>
+                            <li class="nav-item"><a href="">ログアウト</a></li>
                         </ul>
                     </nav>
             </div>
@@ -63,9 +63,9 @@ User user = (User)session.getAttribute("user");
                             <span>山田一郎</span>
                             <span>0000/00/00</span>
                             <div class="small-btns">
-                                <a href="./detail.html" class="small-btn">詳細</a>
-                                <a href="./update.html" class="small-btn small-btn2">更新</a>
-                                <a href="./delete.html" class="small-btn small-btn3">削除</a>
+                                <a href="./detail.jsp" class="small-btn">詳細</a>
+                                <a href="./update.jsp" class="small-btn small-btn2">更新</a>
+                                <a href="./delete.jsp" class="small-btn small-btn3">削除</a>
                             </div>
                         </li>
                         <li class="user-list-item">
@@ -73,9 +73,9 @@ User user = (User)session.getAttribute("user");
                             <span>山田一郎</span>
                             <span>0000/00/00</span>
                             <div class="small-btns">
-                                <a href="./detail.html" class="small-btn">詳細</a>
-                                <a href="./update.html" class="small-btn small-btn2">更新</a>
-                                <a href="./delete.html" class="small-btn small-btn3">削除</a>
+                                <a href="./detail.jsp" class="small-btn">詳細</a>
+                                <a href="./update.jsp" class="small-btn small-btn2">更新</a>
+                                <a href="./delete.jsp" class="small-btn small-btn3">削除</a>
                             </div>
                         </li>
                         <li class="user-list-item">
@@ -83,9 +83,9 @@ User user = (User)session.getAttribute("user");
                             <span>山田一郎</span>
                             <span>0000/00/00</span>
                             <div class="small-btns">
-                                <a href="./detail.html" class="small-btn">詳細</a>
-                                <a href="./update.html" class="small-btn small-btn2">更新</a>
-                                <a href="./delete.html" class="small-btn small-btn3">削除</a>
+                                <a href="./detail.jsp" class="small-btn">詳細</a>
+                                <a href="./update.jsp" class="small-btn small-btn2">更新</a>
+                                <a href="./delete.jsp" class="small-btn small-btn3">削除</a>
                             </div>
                         </li>
                     </ul>

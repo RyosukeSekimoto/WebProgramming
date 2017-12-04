@@ -16,6 +16,7 @@ public class User implements Serializable {
 		this.pass = pass;
 	}
 
+	//getter setter
 	public String getLoginId() {
 		return loginId;
 	}

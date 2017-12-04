@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang ="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>update</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div class="header">
+            <div class="header-wrapper clearfix">
+                <h1 class="site-title"></h1>
+                <nav class="grobal-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><span class="">山田太郎</span>さん</li>
+                        <li class="nav-item"><a href="./login.jsp">ログアウト</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="main">
+            <h2 class="title">ユーザ情報更新</h2>
+            <!--<p class="validation">ここにバリデーションが入ります。</p>-->
+            <div class="update-wrapper">
+                <div id="form" class="update-box">
+                    <div class="form-wrapper">
+                        <form action="#" method="">
+                            <p class="form-label">ログインID</p>
+                            <p class="mail"><input type="email" name="mail" value="000000"/></p>
+                            <p class="form-label">パスワード</p>
+                            <p class="pass"><input type="password" name="pass"/></p>
+                            <p class="form-label">パスワード（確認）</p>
+                            <p class="pass"><input type="password" name="pass"/></p>
+                            <p class="form-label">ユーザ名</p>
+                            <p class="pass"><input type="text" name="name" value="山田太郎"/></p>
+                            <p class="form-label">生年月日</p>
+                            <p class="pass"><input type="date" name="birthDate" value="2000-03-18"/></p>
+                            <p class="submit"><input type="submit" class="middle-btn" value="更新" /></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <p class="back"><a href="./user.jsp">>戻る</a></p>
+        </div>
+    </body>
+</html>
