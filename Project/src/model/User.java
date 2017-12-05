@@ -6,23 +6,44 @@ public class User implements Serializable {
 
 	//フィールド
 	private String loginId;
+	private String name;
+	private String birthDate;
 	private String pass;
+	private String createDate;
+	private String updateDate;
 
 	//コンストラクタ
 	public User() {};
 
-	public User(String loginId, String pass) {
+	public User(String loginId, String name, String pass) {
 		this.loginId = loginId;
+		this.name = name;
 		this.pass = pass;
 	}
 
-	//getter setter
+	//setter getter
 	public String getLoginId() {
 		return loginId;
 	}
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public String getPass() {
@@ -32,5 +53,22 @@ public class User implements Serializable {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+
 
 }

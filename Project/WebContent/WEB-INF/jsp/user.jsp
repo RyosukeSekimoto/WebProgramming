@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User" %>
-
-<%
-
-User user = (User)session.getAttribute("user");
-
-%>
 
 <!DOCTYPE html>
 <html lang ="ja">
@@ -16,17 +11,7 @@ User user = (User)session.getAttribute("user");
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <div class="header">
-            <div class="header-wrapper clearfix">
-                    <h1 class="site-title"></h1>
-                    <nav class="grobal-nav">
-                        <ul class="nav-list">
-                            <li class="nav-item"><span class=""><%= user.getLoginId() %></span>さん</li>
-                            <li class="nav-item"><a href="">ログアウト</a></li>
-                        </ul>
-                    </nav>
-            </div>
-        </div>
+        <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
         <div class="main">
             <h2 class="title">ユーザ一覧</h2>
             <a href="./register.html" class="middle-btn middle-btn2 btn-right">新規登録</a>
@@ -36,11 +21,11 @@ User user = (User)session.getAttribute("user");
                     <div class="search-area clearfix">
                         <div class="login-col">
                             <p class="form-label">ログインID</p>
-                            <input type="email" name="mail"/>
+                            <input type="text" name="loginId"/>
                         </div>
                         <div class="user-col">
                             <p class="form-label">ユーザ名</p>
-                            <input type="password" name="pass"/>
+                            <input type="text" name="userName"/>
                         </div>
                         <div class="birth-col clearfix">
                             <p class="form-label">生年月日</p>

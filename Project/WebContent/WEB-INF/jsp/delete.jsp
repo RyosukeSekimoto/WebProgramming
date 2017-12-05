@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html lang ="ja">
     <head>
@@ -9,7 +10,7 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <div class="header">
+        <header class="header">
             <div class="header-wrapper clearfix">
                 <h1 class="site-title"></h1>
                 <nav class="grobal-nav">
@@ -19,7 +20,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </header>
         <div class="main">
             <h2 class="title">ユーザ削除確認</h2>
             <div class="delete-wrapper">

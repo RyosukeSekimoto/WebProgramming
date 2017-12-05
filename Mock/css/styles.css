@@ -35,10 +35,15 @@ a:link, a:visited, a:hover, a:active {
 
 .validation {
     margin-top: 20px;
+    font-size: 1.0rem;
 }
 
 .red {
     color: #cc0000;
+}
+
+.blue {
+    color: #2490d0;
 }
 
 .main {
@@ -141,6 +146,7 @@ input[type="text"],input[type="date"] {
 /* dateの文字色変更 */
 input[type="date"] {
     color: #606060;
+    font-weight: normal;
 }
 
 /* placeholderの文字色変更 */
