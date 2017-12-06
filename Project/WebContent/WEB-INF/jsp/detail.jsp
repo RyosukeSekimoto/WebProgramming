@@ -15,7 +15,7 @@
                 <nav class="grobal-nav">
                     <ul class="nav-list">
                         <li class="nav-item"><span class="">山田太郎</span>さん</li>
-                        <li class="nav-item"><a href="./login.jsp">ログアウト</a></li>
+                        <li class="nav-item"><a href="./login.html">ログアウト</a></li>
                     </ul>
                 </nav>
             </div>
@@ -46,7 +46,7 @@
                     </tr>
                 </table>
             </div>
-            <p class="back"><a href="./user.jsp">>戻る</a></p>
+            <p class="back"><a href="./user.html">>戻る</a></p>
         </div>
     </body>
 </html>

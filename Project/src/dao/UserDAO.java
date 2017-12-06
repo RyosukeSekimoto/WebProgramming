@@ -24,7 +24,7 @@ public class UserDAO {
 			Statement stmt = conn.createStatement();
 	        ResultSet rs = stmt.executeQuery(sql);
 
-			//結果表に格納されたレコードの内容をUserインスタンスに設定し、Userインスタンスに追加
+			//結果表に格納されたレコードの内容を取り出し、Userインスタンスに追加
 			while(rs.next()) {
 				String loginId = rs.getString("login_id");
 				String name = rs.getString("name");

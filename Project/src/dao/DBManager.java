@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBManager {
-	private static String url =  "jdbc:mysql://localhost/WebProgramming";
+
+	private static String url =  "jdbc:mysql://localhost/WebProgramming";//データベース'Webprogramming'
 	private static String user = "root";
 	private static String pass = "password";
 

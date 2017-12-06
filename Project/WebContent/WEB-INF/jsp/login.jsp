@@ -15,7 +15,7 @@
                 <div class="login-wrapper">
                     <h2 class="title">ログイン画面</h2>
                     <c:if test="${not empty errorMessage}">
-                    	<p class="validation red">ログインIDまたはパスワードが正しくありません。</p>
+                    	<p class="validation red"><c:out value="${errorMessage}" /></p>
                     </c:if>
                     <form action="/UserManagement/Login" method="post" class="login-box">
                         <p class="form-label">ログインID</p>

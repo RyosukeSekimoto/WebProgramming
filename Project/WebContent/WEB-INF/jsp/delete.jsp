@@ -16,7 +16,7 @@
                 <nav class="grobal-nav">
                     <ul class="nav-list">
                         <li class="nav-item"><span class="">山田太郎</span>さん</li>
-                        <li class="nav-item"><a href="./login.jsp">ログアウト</a></li>
+                        <li class="nav-item"><a href="./login.html">ログアウト</a></li>
                     </ul>
                 </nav>
             </div>
@@ -26,11 +26,11 @@
             <div class="delete-wrapper">
                 <p><span>ログインID:000000</span>　を本当に削除してよろしいでしょうか?</p>
                 <div class="middle-btns">
-                    <a class="middle-btn middle-btn2" href="./user.jsp">キャンセル</a>
-                    <a class="middle-btn middle-btn4" href="./user.jsp">削除</a>
+                    <a class="middle-btn middle-btn2" href="./user.html">キャンセル</a>
+                    <a class="middle-btn middle-btn4" href="./user.html">削除</a>
                 </div>
             </div>
-            <p class="back"><a href="./user.jsp">>戻る</a></p>
+            <p class="back"><a href="./user.html">>戻る</a></p>
         </div>
     </body>
 </html>

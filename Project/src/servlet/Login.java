@@ -38,6 +38,7 @@ public class Login extends HttpServlet {
 		User user = userDao.findById(loginId, pass);
 
 		if(user != null) {
+
 			//セッションスコープに保存
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
@@ -46,14 +47,16 @@ public class Login extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
 			dispatcher.forward(request, response);
 
-		} else {
+		} else { //ログインできなかったら
+
 			//リクエストスコープに保存
-			String msg = "パスワードに誤りがあります";
+			String msg = "ログインIDまたはパスワードに誤りがあります。";
 			request.setAttribute("errorMessage", msg);
 
 			//ログイン画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
+
 		}
 
 
