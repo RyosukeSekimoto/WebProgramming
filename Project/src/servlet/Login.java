@@ -35,7 +35,8 @@ public class Login extends HttpServlet {
 
 		//リクエストパラメータで判定
 		UserDAO userDao = new UserDAO();
-		User user = userDao.findById(loginId, pass);
+		String encryptionedPass = Util.encryption(pass);
+		User user = userDao.findById(loginId, encryptionedPass);
 
 		if(user != null) {
 
@@ -50,8 +51,8 @@ public class Login extends HttpServlet {
 		} else { //ログインできなかったら
 
 			//リクエストスコープに保存
-			String msg = "ログインIDまたはパスワードに誤りがあります。";
-			request.setAttribute("errorMessage", msg);
+			String errorMessage = "ログインIDまたはパスワードに誤りがあります。";
+			request.setAttribute("errorMessage", errorMessage);
 
 			//ログイン画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
