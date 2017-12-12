@@ -15,6 +15,7 @@
                 <div class="login-wrapper">
                     <h2 class="title">ログイン画面</h2>
                    	<p class="validation red"><c:out value="${errorMessage}" /></p>
+                   	<p class="validation green"><c:out value="${logoutMessage}" /></p>
                     <form action="/UserManagement/Login" method="post" class="login-box">
                         <p class="form-label">ログインID</p>
                         <p class="login-id"><input type="text" name="loginId"/></p>

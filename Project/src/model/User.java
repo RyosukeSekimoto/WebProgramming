@@ -15,10 +15,25 @@ public class User implements Serializable {
 	//コンストラクタ
 	public User() {};
 
+	public User(String loginId) {
+		this.loginId = loginId;
+	}
+
 	public User(String loginId, String name, String pass) {
 		this.loginId = loginId;
 		this.name = name;
 		this.pass = pass;
+	}
+
+	public User(String loginId, String name, String birthDate, String pass, String createDate, String updateDate) {
+
+		this.loginId = loginId;
+		this.name = name;
+		this.birthDate = birthDate;
+		this.pass = pass;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+
 	}
 
 	//setter getter

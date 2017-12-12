@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="model.User" %>
+<%@ page import="model.DateExecute" %>
 
 <!DOCTYPE html>
 <html lang ="ja">
@@ -9,44 +12,34 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <header class="header">
-            <div class="header-wrapper clearfix">
-                <h1 class="site-title"></h1>
-                <nav class="grobal-nav">
-                    <ul class="nav-list">
-                        <li class="nav-item"><span class="">山田太郎</span>さん</li>
-                        <li class="nav-item"><a href="./login.html">ログアウト</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
         <div class="main">
             <h2 class="title">ユーザ情報詳細参照</h2>
             <div class="detail-wrapper">
                 <table class="detail-table">
                     <tr>
                         <th>ログインID</th>
-                        <td>000000</td>
+                        <td><c:out value="${detailUser.loginId}" /></td>
                     </tr>
                     <tr>
                         <th>ユーザ名</th>
-                        <td>山田太郎</td>
+                        <td><c:out value="${detailUser.name}" /></td>
                     </tr>
                     <tr>
                         <th>生年月日</th>
-                        <td>00年00月00日</td>
+                        <td><c:out value="${DateExecute.DateFormat(detailUser.birthDate)}" /></td>
                     </tr>
                     <tr>
                         <th>登録日時</th>
-                        <td>00年00月00日</td>
+                        <td><c:out value="${DateExecute.DateTimeFormat(detailUser.createDate)}" /></td>
                     </tr>
                     <tr>
                         <th>更新日時</th>
-                        <td>00年00月00日</td>
+                        <td><c:out value="${DateExecute.DateTimeFormat(detailUser.updateDate)}" /></td>
                     </tr>
                 </table>
             </div>
-            <p class="back"><a href="./user.html">>戻る</a></p>
+            <p class="back"><a href="/UserManagement/UserList">>戻る</a></p>
         </div>
     </body>
 </html>

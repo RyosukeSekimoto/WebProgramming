@@ -9,11 +9,11 @@ import javax.xml.bind.DatatypeConverter;
 
 public class Util {
 
-	public static void main(String[] args) {
-		String str = Util.encryption("password");
-		System.out.println(str);
-	}
-
+	/**
+	 * 渡された文字列をMD5で暗号化して返す
+	 * @param targetPass	暗号化前の文字列
+	 * @return				暗号化後の文字列
+	 */
 	public static String encryption(String targetPass) {
 
 		//ハッシュ生成前にバイト配列に置き換える際のCharset

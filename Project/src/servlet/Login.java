@@ -21,9 +21,22 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ログイン画面にフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-		dispatcher.forward(request, response);
+
+		//セッションスコープからログインユーザを取得
+		HttpSession session = request.getSession();
+		User loginUser = (User)session.getAttribute("loginUser");
+
+		if(loginUser != null) {//ユーザーがログインしていたら
+
+			//ユーザー一覧へリダイレクト
+			response.sendRedirect("/UserManagement/UserList");
+
+		} else {//ログインしていなければ
+
+			//ログイン画面にフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,24 +46,22 @@ public class Login extends HttpServlet {
 		String loginId = request.getParameter("loginId");
 		String pass = request.getParameter("pass");
 
-		//リクエストパラメータで判定
 		UserDAO userDao = new UserDAO();
-		String encryptionedPass = Util.encryption(pass);
-		User user = userDao.findById(loginId, encryptionedPass);
+		pass = Util.encryption(pass);
+		User loginUser = userDao.findById(loginId);
 
-		if(user != null) {
+		if(loginUser != null && pass.equals(loginUser.getPass())) {
 
-			//セッションスコープに保存
+			//セッションスコープにログインユーザを保存
 			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
+			session.setAttribute("loginUser", loginUser);
 
-			//ユーザー一覧画面にフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
-			dispatcher.forward(request, response);
+			//ユーザー一覧にリダイレクト
+			response.sendRedirect("/UserManagement/UserList");
 
 		} else { //ログインできなかったら
 
-			//リクエストスコープに保存
+			//リクエストスコープにエラーメッセージを保存
 			String errorMessage = "ログインIDまたはパスワードに誤りがあります。";
 			request.setAttribute("errorMessage", errorMessage);
 
