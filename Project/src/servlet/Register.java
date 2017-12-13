@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,19 +66,15 @@ public class Register extends HttpServlet {
 			//データベースに新しいユーザー情報を登録
 			userDao.createUser(loginId, name, birthDate, encryptedPass, createDate, updateDate);
 
-			//リクエストスコープにメッセージを保存
-			String registerMessage = "ユーザ情報の登録に成功しました。";
-			request.setAttribute("registerMessage", registerMessage);
-
-			//リクエストスコープにユーザ一覧を保存
-			List<User> userList = userDao.findAll();
-			request.setAttribute("userList", userList);
-
-			//ユーザ一覧画面へフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
-			dispatcher.forward(request, response);
+			//ユーザ一覧画面へリダイレクト
+			response.sendRedirect("/UserManagement/UserList");
 
 		} else {
+
+			//リクエストスコープに記入されたログインID、名前、生年月日を保存
+			request.setAttribute("loginId", loginId);
+			request.setAttribute("name", name);
+			request.setAttribute("birthDate", birthDate);
 
 			//リクエストスコープにエラーメッセージを保存
 			String errorMessage = "入力された内容は正しくありません。";

@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,17 +62,8 @@ public class Delete extends HttpServlet {
 		UserDAO userDao = new UserDAO();
 		userDao.deleteUser(loginId);
 
-		//リクエストスコープにメッセージを保存
-		String deleteMessage = "ユーザ情報の削除に成功しました。";
-		request.setAttribute("deleteMessage", deleteMessage);
-
-		//リクエストスコープにユーザ一覧を保存
-		List<User> userList = userDao.findAll();
-		request.setAttribute("userList", userList);
-
-		////ユーザ一覧画面へフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
-		dispatcher.forward(request, response);
+		////ユーザ一覧画面へリダイレクト
+		response.sendRedirect("/UserManagement/UserList");
 	}
 
 }

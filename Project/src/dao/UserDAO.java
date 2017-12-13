@@ -8,9 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.SearchConditionBeans;
 import model.User;
 
-public class UserDAO {
+public class UserDAO extends DaoUtil {
 
 	/**
 	 * データベースからすべてのユーザ情報を取得して返す
@@ -27,7 +28,7 @@ public class UserDAO {
 			conn = DBManager.getConnection();
 
 			//SELECT文を準備
-			String sql = "SELECT login_id, name, birth_date, password, create_date, update_date FROM user";
+			String sql = "SELECT * FROM user ORDER BY ID DESC";
 
 			//SELECT文を実行し、結果表を取得
 			Statement stmt = conn.createStatement();
@@ -36,6 +37,7 @@ public class UserDAO {
 			//結果表に格納されたレコードの内容をuserインスタンスに設定し、ArrayListインスタンスに追加
 			while(rs.next()) {
 
+				int id = rs.getInt("id");
 				String loginId = rs.getString("login_id");
 				String name = rs.getString("name");
 				String birthDate = rs.getString("birth_date");
@@ -43,7 +45,7 @@ public class UserDAO {
 				String createDate = rs.getString("create_date");
 				String updateDate = rs.getString("update_date");
 
-				User user = new User(loginId, name, birthDate, pass, createDate, updateDate);
+				User user = new User(id, loginId, name, birthDate, pass, createDate, updateDate);
 				userList.add(user);
 			}
 
@@ -78,7 +80,7 @@ public class UserDAO {
 			conn = DBManager.getConnection();
 
 			//SELECT文を準備
-			String sql = "SELECT login_id, name, birth_date, password, create_date, update_date FROM user WHERE login_id = ?";
+			String sql = "SELECT * FROM user WHERE login_id = ?";
 
 			// SELECTを実行し、結果表を取得
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -88,6 +90,7 @@ public class UserDAO {
 			if (rs.next()) {
 
 			//結果表に格納されたレコードの内容を取り出し、Userインスタンスに追加
+				int id = rs.getInt("id");
 				String loginId = rs.getString("login_id");
 				String name = rs.getString("name");
 				String birthDate = rs.getString("birth_date");
@@ -95,7 +98,7 @@ public class UserDAO {
 				String createDate = rs.getString("create_date");
 				String updateDate = rs.getString("update_date");
 
-				User user = new User(loginId, name, birthDate, pass, createDate, updateDate);
+				User user = new User(id, loginId, name, birthDate, pass, createDate, updateDate);
 				return user;
 			}
 
@@ -248,5 +251,71 @@ public class UserDAO {
 				}
 			}
 		}
+	}
+
+	/**
+	 * ユーザを検索する(引数に渡された値が空でないもののみ検索する)
+	 * @param loginId
+	 * @param userName
+	 * @param birthdayFrom
+	 * @param birthdayTo
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<User> searchUser(String loginId, String userName, String birthdayFrom, String birthdayTo) {
+
+		Connection conn = null;
+		ArrayList<User> userList = new ArrayList<User>();
+
+		try {
+
+			conn = DBManager.getConnection();
+
+			String sql = "SELECT * FROM user";
+
+			// 各種検索要件を設定してSQLを生成
+			List<SearchConditionBeans> conditions = new ArrayList<SearchConditionBeans>();
+			conditions.add(new SearchConditionBeans("login_id", loginId, WHERE_TYPE_EQUAL));
+			conditions.add(new SearchConditionBeans("name", userName, WHERE_TYPE_LIKE_PARTIAL_MATCH));
+			conditions.add(new SearchConditionBeans("birth_date", birthdayFrom, WHERE_TYPE_GENDER_OR_EQUAL));
+			conditions.add(new SearchConditionBeans("birth_date", birthdayTo, WHERE_TYPE_LESS_OR_EQUAL));
+			sql = addWhereCondition(sql, conditions);
+
+			// IDの降順に表示
+			sql += " order by id desc";
+
+			// TODO デバッグ用(納品時に消す)
+			System.out.println(sql);
+
+			PreparedStatement st = conn.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+
+
+			while (rs.next()) {
+				User user = new User();
+				user.setId(rs.getInt("id"));
+				user.setLoginId(rs.getString("login_id"));
+				user.setName(rs.getString("name"));
+				user.setBirthDate(rs.getString("birth_date"));
+				user.setPass(rs.getString("password"));
+				user.setCreateDate(rs.getString("create_date"));
+				user.setUpdateDate(rs.getString("update_date"));
+				userList.add(user);
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//データベース切断
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return userList;
+
 	}
 }

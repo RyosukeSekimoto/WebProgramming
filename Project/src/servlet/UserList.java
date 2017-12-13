@@ -34,10 +34,28 @@ public class UserList extends HttpServlet {
 
 		} else {
 
-			//ユーザ一覧をリクエストスコープに保存
-			UserDAO userDao = new UserDAO();
-			List<User> userList = userDao.findAll();
-			request.setAttribute("userList", userList);
+			//リクエストパラメータを取得
+			request.setCharacterEncoding("UTF-8");
+			String loginId = request.getParameter("loginId");
+			String userName = request.getParameter("userName");
+			String birthdayFrom = request.getParameter("birthdayFrom");
+			String birthdayTo = request.getParameter("birthdayTo");
+
+			//初回表示時
+			if(loginId == null && birthdayFrom == null && birthdayTo == null) {
+
+				//ユーザ一覧をリクエストスコープに保存
+				UserDAO userDao = new UserDAO();
+				List<User> userList = userDao.findAll();
+				request.setAttribute("userList", userList);
+
+			} else {
+
+				//検索結果のユーザ一覧をリクエストスコープに保存
+				UserDAO userDao = new UserDAO();
+				List<User> userList = userDao.searchUser(loginId, userName, birthdayFrom, birthdayTo);
+				request.setAttribute("userList", userList);
+			}
 
 			//ユーザ一覧画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");

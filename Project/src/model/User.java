@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 	//フィールド
+	private int id;
 	private String loginId;
 	private String name;
 	private String birthDate;
@@ -15,15 +16,6 @@ public class User implements Serializable {
 	//コンストラクタ
 	public User() {};
 
-	public User(String loginId) {
-		this.loginId = loginId;
-	}
-
-	public User(String loginId, String name, String pass) {
-		this.loginId = loginId;
-		this.name = name;
-		this.pass = pass;
-	}
 
 	public User(String loginId, String name, String birthDate, String pass, String createDate, String updateDate) {
 
@@ -36,7 +28,28 @@ public class User implements Serializable {
 
 	}
 
+	public User(int id, String loginId, String name, String birthDate, String pass, String createDate, String updateDate) {
+
+		this.id = id;
+		this.loginId = loginId;
+		this.name = name;
+		this.birthDate = birthDate;
+		this.pass = pass;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+
+	}
+
 	//setter getter
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getLoginId() {
 		return loginId;
 	}

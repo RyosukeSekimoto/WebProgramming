@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User" %>
-<%@ page import="model.DateExecute" %>
+<%@ page import="model.DateLogic" %>
 
 <!DOCTYPE html>
 <html lang ="ja">
@@ -16,9 +16,6 @@
         <div class="main">
             <h2 class="title">ユーザ一覧</h2>
             <a href="/UserManagement/Register" class="middle-btn middle-btn2 btn-right">新規登録</a>
-            <p class="validation green"><c:out value="${updateMessage}" /></p>
-            <p class="validation green"><c:out value="${registerMessage}" /></p>
-            <p class="validation green"><c:out value="${deleteMessage}" /></p>
             <div class="users-wrapper">
                 <form action="/UserManagement/UserList" method="get" class="search-box">
                     <div class="search-area clearfix">
@@ -32,9 +29,9 @@
                         </div>
                         <div class="birth-col clearfix">
                             <p class="form-label">生年月日</p>
-                            <input type="date" name="dateStart"/>
+                            <input type="date" name="birthdayFrom"/>
                             <span style="padding: 0 6px;">〜</span>
-                            <input type="date" name="dateEnd"/>
+                            <input type="date" name="birthdayTo"/>
                         </div>
                     </div>
                     <p class="submit"><input type="submit" class="middle-btn middle-btn3" value="検索" /></p>
@@ -51,7 +48,7 @@
 							<li class="user-list-item">
                        	    	<span><c:out value="${user.loginId}" /></span>
                             	<span><c:out value="${user.name}" /></span>
-                            	<span><c:out value="${DateExecute.DateFormat(user.birthDate)}" /></span>
+                            	<span><c:out value="${DateLogic.DateFormat(user.birthDate)}" /></span>
                             	<div class="small-btns">
                                 	<a href="Detail?loginId=<c:out value="${user.loginId}" />" class="small-btn">詳細</a>
                                 	<c:if test="${loginUser.loginId.equals(user.loginId) || loginUser.loginId.equals('admin')}">

@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateExecute {
+public class DateLogic {
 
 	/**
 	 * detetime型で現在時刻を返す

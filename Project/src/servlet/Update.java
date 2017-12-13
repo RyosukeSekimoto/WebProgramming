@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -83,17 +82,8 @@ public class Update extends HttpServlet {
 			//ユーザー情報をアップデート
 			userDao.updateById(loginId, name, birthDate, pass, updateDate);
 
-			//リクエストスコープにメッセージを保存
-			String updateMessage = "ユーザ情報の更新に成功しました。";
-			request.setAttribute("updateMessage", updateMessage);
-
-			//リクエストスコープにユーザ一覧を保存
-			List<User> userList = userDao.findAll();
-			request.setAttribute("userList", userList);
-
-			//ユーザ一覧へフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user.jsp");
-			dispatcher.forward(request, response);
+			//ユーザ一覧へリダイレクト
+			response.sendRedirect("/UserManagement/UserList");
 
 		} else {
 

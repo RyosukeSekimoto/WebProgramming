@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.sql.Timestamp" %>
 <%@ page import="model.User" %>
-<%@ page import="model.DateExecute" %>
 
 <!DOCTYPE html>
 <html lang ="ja">
@@ -20,17 +21,17 @@
                 <div class="register-box">
                     <form action="/UserManagement/Register" method="post">
                         <p class="form-label">ログインID</p>
-                        <p class="loginId"><input type="text" name="loginId"/></p>
+                        <p class="loginId"><input type="text" name="loginId" value="<c:out value="${loginId}" />"/></p>
                         <p class="form-label">パスワード</p>
-                        <p class="pass"><input type="password" name="pass"/></p>
+                        <p class="pass"><input type="password" name="pass" /></p>
                         <p class="form-label">パスワード（確認）</p>
                         <p class="pass"><input type="password" name="checkingPass"/></p>
                         <p class="form-label">ユーザ名</p>
-                        <p class="name"><input type="text" name="name"/></p>
+                        <p class="name"><input type="text" name="name" value="<c:out value="${name}" />"/></p>
                         <p class="form-label">生年月日</p>
-                        <p class="birthDate"><input type="date" name="birthDate"/></p>
-                        <input type="hidden" name="createDate" value="<c:out value="${DateExecute.dateTime()}" />">
-                        <input type="hidden" name="updateDate" value="<c:out value="${DateExecute.dateTime()}" />">
+                        <p class="birthDate"><input type="date" name="birthDate" value="<c:out value="${birthDate}" />"/></p>
+                        <input type="hidden" name="createDate" value="<c:out value="${new Timestamp(new Date)}" />">
+                        <input type="hidden" name="updateDate" value="<c:out value="${new Timestamp(new Date)}" />">
                         <p class="submit"><input type="submit" class="middle-btn" value="登録"/></p>
                     </form>
                 </div>
