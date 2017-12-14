@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
+import model.FormValues;
 import model.User;
+import model.UtilLogic;
 
 /**
  * Servlet implementation class Login
@@ -47,16 +49,16 @@ public class Login extends HttpServlet {
 		String pass = request.getParameter("pass");
 
 		UserDAO userDao = new UserDAO();
-		pass = Util.encryption(pass);
+		pass = UtilLogic.encryption(pass);
 		User loginUser = userDao.findById(loginId);
 
-		if(loginUser != null && pass.equals(loginUser.getPass())) {
+		if(loginUser != null && pass.equals(loginUser.getPass())) {//登録ユーザかつパスワードに不備がなければ
 
 			//セッションスコープにログインユーザを保存
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
 
-			//ユーザー一覧にリダイレクト
+			//ユーザ一覧にリダイレクト
 			response.sendRedirect("/UserManagement/UserList");
 
 		} else { //ログインできなかったら
@@ -65,13 +67,14 @@ public class Login extends HttpServlet {
 			String errorMessage = "ログインIDまたはパスワードに誤りがあります。";
 			request.setAttribute("errorMessage", errorMessage);
 
+			//リクエストスコープにフォームに記入されたログインIDを保存
+			FormValues formValues = new FormValues(loginId);
+			request.setAttribute("formValues", formValues);
+
 			//ログイン画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
-
 		}
-
-
 	}
 
 }

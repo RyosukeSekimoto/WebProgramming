@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User" %>
-<%@ page import="model.DateLogic" %>
+<%@ page import="model.UtilLogic" %>
 
 <!DOCTYPE html>
 <html lang ="ja">
@@ -48,7 +48,7 @@
 							<li class="user-list-item">
                        	    	<span><c:out value="${user.loginId}" /></span>
                             	<span><c:out value="${user.name}" /></span>
-                            	<span><c:out value="${DateLogic.DateFormat(user.birthDate)}" /></span>
+                            	<span><c:out value="${UtilLogic.displayDate(user.birthDate)}" /></span>
                             	<div class="small-btns">
                                 	<a href="Detail?loginId=<c:out value="${user.loginId}" />" class="small-btn">詳細</a>
                                 	<c:if test="${loginUser.loginId.equals(user.loginId) || loginUser.loginId.equals('admin')}">

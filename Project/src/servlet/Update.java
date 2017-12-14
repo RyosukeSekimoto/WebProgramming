@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import model.User;
+import model.UtilLogic;
 
 /**
  * Servlet implementation class Update
@@ -47,7 +50,6 @@ public class Update extends HttpServlet {
 			//詳細画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/update.jsp");
 			dispatcher.forward(request, response);
-
 		}
 	}
 
@@ -60,7 +62,7 @@ public class Update extends HttpServlet {
 		String checkingPass = request.getParameter("checkingPass");
 		String name = request.getParameter("name");
 		String birthDate = request.getParameter("birthDate");
-		String updateDate = request.getParameter("updateDate");
+		Timestamp updateDate = new Timestamp(Long.parseLong(request.getParameter("updateDate")));
 
 		UserDAO userDao = new UserDAO();
 
@@ -75,12 +77,14 @@ public class Update extends HttpServlet {
 			} else {
 
 				//パスワードが入力されていればそれを暗号化
-				pass = Util.encryption(pass);
-
+				pass = UtilLogic.encryption(pass);
 			}
 
+			//生年月日をDate型に変換
+			Date convertBirthDate = Date.valueOf(birthDate);
+
 			//ユーザー情報をアップデート
-			userDao.updateById(loginId, name, birthDate, pass, updateDate);
+			userDao.updateById(loginId, name, convertBirthDate, pass, updateDate);
 
 			//ユーザ一覧へリダイレクト
 			response.sendRedirect("/UserManagement/UserList");
@@ -98,7 +102,6 @@ public class Update extends HttpServlet {
 			//ユーザ更新画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/update.jsp");
 			dispatcher.forward(request, response);
-
 		}
 	}
 }

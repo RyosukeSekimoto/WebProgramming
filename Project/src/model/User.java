@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class User implements Serializable {
 
@@ -8,27 +10,15 @@ public class User implements Serializable {
 	private int id;
 	private String loginId;
 	private String name;
-	private String birthDate;
+	private Date birthDate;
 	private String pass;
-	private String createDate;
-	private String updateDate;
+	private Timestamp createDate;
+	private Timestamp updateDate;
 
 	//コンストラクタ
 	public User() {};
 
-
-	public User(String loginId, String name, String birthDate, String pass, String createDate, String updateDate) {
-
-		this.loginId = loginId;
-		this.name = name;
-		this.birthDate = birthDate;
-		this.pass = pass;
-		this.createDate = createDate;
-		this.updateDate = updateDate;
-
-	}
-
-	public User(int id, String loginId, String name, String birthDate, String pass, String createDate, String updateDate) {
+	public User(int id, String loginId, String name, Date birthDate, String pass, Timestamp createDate, Timestamp updateDate) {
 
 		this.id = id;
 		this.loginId = loginId;
@@ -37,7 +27,6 @@ public class User implements Serializable {
 		this.pass = pass;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
-
 	}
 
 	//setter getter
@@ -66,11 +55,11 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -82,19 +71,19 @@ public class User implements Serializable {
 		this.pass = pass;
 	}
 
-	public String getCreateDate() {
+	public Timestamp getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 
-	public String getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
 

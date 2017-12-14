@@ -47,7 +47,6 @@ public class Detail extends HttpServlet {
 			//詳細画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/detail.jsp");
 			dispatcher.forward(request, response);
-
 		}
 	}
 

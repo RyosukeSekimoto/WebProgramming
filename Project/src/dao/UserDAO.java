@@ -1,10 +1,12 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,15 +39,16 @@ public class UserDAO extends DaoUtil {
 			//結果表に格納されたレコードの内容をuserインスタンスに設定し、ArrayListインスタンスに追加
 			while(rs.next()) {
 
-				int id = rs.getInt("id");
-				String loginId = rs.getString("login_id");
-				String name = rs.getString("name");
-				String birthDate = rs.getString("birth_date");
-				String pass = rs.getString("password");
-				String createDate = rs.getString("create_date");
-				String updateDate = rs.getString("update_date");
+				User user = new User();
 
-				User user = new User(id, loginId, name, birthDate, pass, createDate, updateDate);
+				user.setId(rs.getInt("id"));
+				user.setLoginId(rs.getString("login_id"));
+				user.setName(rs.getString("name"));
+				user.setBirthDate(rs.getDate("birth_date"));
+				user.setPass(rs.getString("password"));
+				user.setCreateDate(rs.getTimestamp("create_date"));
+				user.setUpdateDate(rs.getTimestamp("update_date"));
+
 				userList.add(user);
 			}
 
@@ -89,16 +92,17 @@ public class UserDAO extends DaoUtil {
 
 			if (rs.next()) {
 
-			//結果表に格納されたレコードの内容を取り出し、Userインスタンスに追加
-				int id = rs.getInt("id");
-				String loginId = rs.getString("login_id");
-				String name = rs.getString("name");
-				String birthDate = rs.getString("birth_date");
-				String pass = rs.getString("password");
-				String createDate = rs.getString("create_date");
-				String updateDate = rs.getString("update_date");
+				//結果表に格納されたレコードの内容を取り出し、Userインスタンスに追加
+				User user = new User();
 
-				User user = new User(id, loginId, name, birthDate, pass, createDate, updateDate);
+				user.setId(rs.getInt("id"));
+				user.setLoginId(rs.getString("login_id"));
+				user.setName(rs.getString("name"));
+				user.setBirthDate(rs.getDate("birth_date"));
+				user.setPass(rs.getString("password"));
+				user.setCreateDate(rs.getTimestamp("create_date"));
+				user.setUpdateDate(rs.getTimestamp("update_date"));
+
 				return user;
 			}
 
@@ -129,7 +133,7 @@ public class UserDAO extends DaoUtil {
 	 * @param createDate	※登録日時
 	 * @param updateDate	※更新日時
 	 */
-	public void createUser(String loginId, String name, String birthDate, String password, String createDate, String updateDate) {
+	public void createUser(String loginId, String name, Date birthDate, String password, Timestamp createDate, Timestamp updateDate) {
 
 		Connection conn = null;
 
@@ -145,10 +149,10 @@ public class UserDAO extends DaoUtil {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, loginId);
 			pStmt.setString(2, name);
-			pStmt.setString(3, birthDate);
+			pStmt.setDate(3, birthDate);
 			pStmt.setString(4, password);
-			pStmt.setString(5, createDate);
-			pStmt.setString(6, updateDate);
+			pStmt.setTimestamp(5, createDate);
+			pStmt.setTimestamp(6, updateDate);
 
 			int resultNum = pStmt.executeUpdate();
 
@@ -177,7 +181,7 @@ public class UserDAO extends DaoUtil {
 	 * @param password
 	 * @param updateDate
 	 */
-	public void updateById(String loginId, String name, String birthDate, String password, String updateDate) {
+	public void updateById(String loginId, String name, Date birthDate, String password, Timestamp updateDate) {
 
 		Connection conn = null;
 
@@ -191,9 +195,9 @@ public class UserDAO extends DaoUtil {
 			//UPDATEを実行
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, name);
-			pStmt.setString(2, birthDate);
+			pStmt.setDate(2, birthDate);
 			pStmt.setString(3, password);
-			pStmt.setString(4, updateDate);
+			pStmt.setTimestamp(4, updateDate);
 			pStmt.setString(5, loginId);
 
 			int resultNum = pStmt.executeUpdate();
@@ -296,10 +300,10 @@ public class UserDAO extends DaoUtil {
 				user.setId(rs.getInt("id"));
 				user.setLoginId(rs.getString("login_id"));
 				user.setName(rs.getString("name"));
-				user.setBirthDate(rs.getString("birth_date"));
+				user.setBirthDate(rs.getDate("birth_date"));
 				user.setPass(rs.getString("password"));
-				user.setCreateDate(rs.getString("create_date"));
-				user.setUpdateDate(rs.getString("update_date"));
+				user.setCreateDate(rs.getTimestamp("create_date"));
+				user.setUpdateDate(rs.getTimestamp("update_date"));
 				userList.add(user);
 			}
 

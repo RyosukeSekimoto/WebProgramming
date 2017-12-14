@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User" %>
-<%@ page import="model.DateLogic" %>
+<%@ page import="model.UtilLogic" %>
 
 <!DOCTYPE html>
 <html lang ="ja">
@@ -31,7 +31,7 @@
                             <p class="form-label">生年月日</p>
                             <p class="birthDate"><input type="date" name="birthDate" value="<c:out value="${updateUser.birthDate}" />"/></p>
                             <p class="submit"><input type="submit" class="middle-btn" value="更新" /></p>
-                            <input type="hidden" name="updateDate" value="<c:out value="${DateExecute.dateTime()}" />">
+                            <input type="hidden" name="updateDate" value="<c:out value="${System.currentTimeMillis()}" />">
                         </form>
                     </div>
                 </div>

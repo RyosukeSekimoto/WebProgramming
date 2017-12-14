@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User" %>
-<%@ page import="model.DateLogic" %>
+<%@ page import="model.UtilLogic" %>
 
 <!DOCTYPE html>
 <html lang ="ja">
@@ -27,15 +27,15 @@
                     </tr>
                     <tr>
                         <th>生年月日</th>
-                        <td><c:out value="${DateLogic.DateFormat(detailUser.birthDate)}" /></td>
+                        <td><c:out value="${UtilLogic.displayDate(detailUser.birthDate)}" /></td>
                     </tr>
                     <tr>
                         <th>登録日時</th>
-                        <td><c:out value="${DateLogic.DateTimeFormat(detailUser.createDate)}" /></td>
+                        <td><c:out value="${UtilLogic.displayDateTime(detailUser.createDate)}" /></td>
                     </tr>
                     <tr>
                         <th>更新日時</th>
-                        <td><c:out value="${DateLogic.DateTimeFormat(detailUser.updateDate)}" /></td>
+                        <td><c:out value="${UtilLogic.displayDateTime(detailUser.updateDate)}" /></td>
                     </tr>
                 </table>
             </div>

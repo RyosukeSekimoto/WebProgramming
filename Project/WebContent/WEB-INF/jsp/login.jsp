@@ -18,10 +18,10 @@
                    	<p class="validation green"><c:out value="${logoutMessage}" /></p>
                     <form action="/UserManagement/Login" method="post" class="login-box">
                         <p class="form-label">ログインID</p>
-                        <p class="login-id"><input type="text" name="loginId"/></p>
+                        <p class="login-id"><input type="text" name="loginId" value="<c:out value="${formValues.loginId}" />"/></p>
                         <p class="form-label">パスワード</p>
                         <p class="pass"><input type="password" name="pass"/></p>
-                        <p class="submit"><input type="submit" class="middle-btn" value="ログイン" /></p>
+                        <p class="submit"><input type="submit" class="middle-btn" /></p>
                     </form>
                 </div>
         </div>

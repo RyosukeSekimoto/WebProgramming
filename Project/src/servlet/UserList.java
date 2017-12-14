@@ -42,7 +42,7 @@ public class UserList extends HttpServlet {
 			String birthdayTo = request.getParameter("birthdayTo");
 
 			//初回表示時
-			if(loginId == null && birthdayFrom == null && birthdayTo == null) {
+			if(loginId == null) {
 
 				//ユーザ一覧をリクエストスコープに保存
 				UserDAO userDao = new UserDAO();
@@ -63,8 +63,8 @@ public class UserList extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//	}
 
 }

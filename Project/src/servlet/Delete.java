@@ -47,7 +47,6 @@ public class Delete extends HttpServlet {
 			//ユーザ削除画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete.jsp");
 			dispatcher.forward(request, response);
-
 		}
 
 	}

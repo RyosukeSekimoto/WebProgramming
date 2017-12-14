@@ -4,8 +4,12 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import javax.xml.bind.DatatypeConverter;
+
 
 public class UtilLogic {
 
@@ -46,6 +50,32 @@ public class UtilLogic {
         	e.printStackTrace();
         }
         return null;
+	}
+
+	/**
+	 * Date型の日付をString型("yyyy年MM月dd日")に変換して返す
+	 * @param date	変換したいDate型の日付
+	 * @return		"yyyy年MM月dd日"表示の日付
+	 */
+	public static String displayDate(Date date) {
+
+            SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy年MM月dd日");
+    		String displayDate = sdFormat.format(date);
+
+    		return displayDate;
+	}
+
+	/**
+	 * Timestamp型の日時をString型("yyyy年MM月dd日 kk:mm")にして返す
+	 * @param ts	変換したいTimestamp型の日時
+	 * @return
+	 */
+	public static String displayDateTime(Timestamp ts) {
+
+            SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy年MM月dd日 kk:mm");
+    		String displayDateTime = sdFormat.format(ts);
+
+    		return displayDateTime;
 	}
 
 }

@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
+import model.FormValues;
 import model.User;
+import model.UtilLogic;
 
 /**
  * Servlet implementation class Register
@@ -36,7 +40,6 @@ public class Register extends HttpServlet {
 			//ユーザ登録画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
 			dispatcher.forward(request, response);
-
 		}
 	}
 
@@ -49,10 +52,10 @@ public class Register extends HttpServlet {
 		String checkingPass = request.getParameter("checkingPass");
 		String name = request.getParameter("name");
 		String birthDate = request.getParameter("birthDate");
-		String createDate = request.getParameter("createDate");
-		String updateDate = request.getParameter("updateDate");
+		Timestamp createDate = new Timestamp(Long.parseLong(request.getParameter("createDate")));
+		Timestamp updateDate = new Timestamp(Long.parseLong(request.getParameter("updateDate")));
 
-		//登録されたログインIDでユーザを検索
+		//記入されたログインIDでユーザ検索
 		UserDAO userDao = new UserDAO();
 		User existUser = userDao.findById(loginId);
 
@@ -61,20 +64,21 @@ public class Register extends HttpServlet {
 			&& (existUser == null)) {// 同じログインIDのユーザーがなし
 
 			//パスワードを暗号化
-			String encryptedPass = Util.encryption(pass);
+			String encryptedPass = UtilLogic.encryption(pass);
+			//生年月日をDate型に変換
+			Date convertBirthDate = Date.valueOf(birthDate);
 
 			//データベースに新しいユーザー情報を登録
-			userDao.createUser(loginId, name, birthDate, encryptedPass, createDate, updateDate);
+			userDao.createUser(loginId, name, convertBirthDate, encryptedPass, createDate, updateDate);
 
 			//ユーザ一覧画面へリダイレクト
 			response.sendRedirect("/UserManagement/UserList");
 
 		} else {
 
-			//リクエストスコープに記入されたログインID、名前、生年月日を保存
-			request.setAttribute("loginId", loginId);
-			request.setAttribute("name", name);
-			request.setAttribute("birthDate", birthDate);
+			//リクエストスコープにフォームに記入されたログインID、名前、生年月日を保存
+			FormValues formValues = new FormValues(loginId, name, birthDate);
+			request.setAttribute("formValues", formValues);
 
 			//リクエストスコープにエラーメッセージを保存
 			String errorMessage = "入力された内容は正しくありません。";
@@ -83,7 +87,6 @@ public class Register extends HttpServlet {
 			//ユーザ一覧画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
 			dispatcher.forward(request, response);
-
 		}
 	}
 
