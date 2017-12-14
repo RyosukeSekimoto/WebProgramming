@@ -52,6 +52,8 @@ public class Register extends HttpServlet {
 		String checkingPass = request.getParameter("checkingPass");
 		String name = request.getParameter("name");
 		String birthDate = request.getParameter("birthDate");
+		System.out.println(request.getParameter("createDate"));
+		System.out.println(request.getParameter("updateDate"));
 		Timestamp createDate = new Timestamp(Long.parseLong(request.getParameter("createDate")));
 		Timestamp updateDate = new Timestamp(Long.parseLong(request.getParameter("updateDate")));
 
@@ -59,7 +61,7 @@ public class Register extends HttpServlet {
 		UserDAO userDao = new UserDAO();
 		User existUser = userDao.findById(loginId);
 
-		if	((loginId.length() != 0 && pass.length() != 0 && checkingPass.length() != 0 && name.length() != 0 && birthDate.length() != 0)//記入漏れがなし
+		if((loginId.length() != 0 && pass.length() != 0 && checkingPass.length() != 0 && name.length() != 0 && birthDate.length() != 0)//記入漏れがなし
 			&& (pass.equals(checkingPass)) //パスワードに不備なし
 			&& (existUser == null)) {// 同じログインIDのユーザーがなし
 

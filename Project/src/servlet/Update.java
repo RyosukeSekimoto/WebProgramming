@@ -75,7 +75,6 @@ public class Update extends HttpServlet {
 				pass = updateUser.getPass();
 
 			} else {
-
 				//パスワードが入力されていればそれを暗号化
 				pass = UtilLogic.encryption(pass);
 			}

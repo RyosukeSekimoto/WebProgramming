@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class FormValues implements Serializable {
 
+	public static void main(String[] args) {
+		FormValues f = new FormValues();
+		System.out.println(f.getName());
+	}
+
 	//フィールド
 	private String loginId;
 	private String name;
@@ -14,12 +19,10 @@ public class FormValues implements Serializable {
 	public FormValues() {};
 
 	public FormValues(String loginId) {
-
 		this.loginId = loginId;
 	}
 
 	public FormValues(String loginId, String name, String birthDate) {
-
 		this.loginId = loginId;
 		this.name = name;
 		this.birthDate = birthDate;

@@ -44,7 +44,7 @@
                     </ul>
                     <ul class="user-list">
                     <c:forEach var="user" items="${userList}">
-                    	<c:if test="${user.loginId.equals('admin')? false : true}">
+                    	<c:if test="${!user.loginId.equals('admin')}">
 							<li class="user-list-item">
                        	    	<span><c:out value="${user.loginId}" /></span>
                             	<span><c:out value="${user.name}" /></span>

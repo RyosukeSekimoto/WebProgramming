@@ -19,7 +19,6 @@ public class User implements Serializable {
 	public User() {};
 
 	public User(int id, String loginId, String name, Date birthDate, String pass, Timestamp createDate, Timestamp updateDate) {
-
 		this.id = id;
 		this.loginId = loginId;
 		this.name = name;
@@ -86,6 +85,4 @@ public class User implements Serializable {
 	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
-
-
 }

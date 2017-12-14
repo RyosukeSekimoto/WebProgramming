@@ -40,7 +40,6 @@ public class UserDAO extends DaoUtil {
 			while(rs.next()) {
 
 				User user = new User();
-
 				user.setId(rs.getInt("id"));
 				user.setLoginId(rs.getString("login_id"));
 				user.setName(rs.getString("name"));
@@ -90,11 +89,10 @@ public class UserDAO extends DaoUtil {
 			pStmt.setString(1, targetId);
 			ResultSet rs = pStmt.executeQuery();
 
+			//結果表に格納されたレコードの内容を取り出し、Userインスタンスに追加
 			if (rs.next()) {
 
-				//結果表に格納されたレコードの内容を取り出し、Userインスタンスに追加
 				User user = new User();
-
 				user.setId(rs.getInt("id"));
 				user.setLoginId(rs.getString("login_id"));
 				user.setName(rs.getString("name"));
@@ -272,9 +270,9 @@ public class UserDAO extends DaoUtil {
 		ArrayList<User> userList = new ArrayList<User>();
 
 		try {
-
 			conn = DBManager.getConnection();
 
+			//SQL文の基本形（検索条件なし）の用意
 			String sql = "SELECT * FROM user";
 
 			// 各種検索要件を設定してSQLを生成
