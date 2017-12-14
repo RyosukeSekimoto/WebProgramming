@@ -52,8 +52,6 @@ public class Register extends HttpServlet {
 		String checkingPass = request.getParameter("checkingPass");
 		String name = request.getParameter("name");
 		String birthDate = request.getParameter("birthDate");
-		System.out.println(request.getParameter("createDate"));
-		System.out.println(request.getParameter("updateDate"));
 		Timestamp createDate = new Timestamp(Long.parseLong(request.getParameter("createDate")));
 		Timestamp updateDate = new Timestamp(Long.parseLong(request.getParameter("updateDate")));
 
